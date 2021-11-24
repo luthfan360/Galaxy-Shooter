@@ -6,7 +6,7 @@ Platform : UNITY / C#
 Created by Jonathan Weinberger
 
 ## Download and Prepare Project Files
-On this repository https://github.com/luthfan360/common-project
+On this repository https://github.com/luthfan360/Unity-Study
 1. Click on Code
 2. Select Download ZIP
 3. Wait until download completed
