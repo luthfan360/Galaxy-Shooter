@@ -6,7 +6,7 @@ Platform : UNITY / C#
 Created by Jonathan Weinberger
 
 ## Download and Prepare Project Files
-On this repository https://github.com/luthfan360/common-project
+On this repository https://github.com/luthfan360/Unity-Study
 1. Click on Code
 2. Select Download ZIP
 3. Wait until download completed
@@ -20,3 +20,7 @@ On this repository https://github.com/luthfan360/common-project
 3. Add the folder containing the project files
 4. Select the latest Unity version for the newly added project
 5. Open the project by clicking its name
+
+## Things to note
+1. This is a currently ongoing/unfinished project
+2. This project is for educational purposes only
