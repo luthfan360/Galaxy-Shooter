@@ -25,12 +25,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     GameObject playerShield;
     SpawnManager spawnManager; 
+    UIManager UIManager;
+    GameManager gameManager;
     
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
-        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>(); 
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
     }
 
     // Update is called once per frame
@@ -97,10 +101,13 @@ public class Player : MonoBehaviour
         
         lives -= 1;
 
+        UIManager.updateLives(lives);
+
         if (lives < 1)
         {
             Destroy(this.gameObject);
             spawnManager.gameOver = true;
+            gameManager.GameOver();
         }
     }
 

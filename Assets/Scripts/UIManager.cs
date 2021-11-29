@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     Image livesImage;
     [SerializeField]
     Sprite[] liveSprites;
+    [SerializeField]
+    Text gameOverText;
+    [SerializeField]
+    Text restartHint;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +28,27 @@ public class UIManager : MonoBehaviour
     {
         int score = player.score;
         scoreText.text = $"SCORE : {score}";
+    }
+
+    public void updateLives(int currentLives)
+    {
+        livesImage.sprite = liveSprites[currentLives];
+
+        if (currentLives < 1)
+        {
+            restartHint.gameObject.SetActive(true);
+            StartCoroutine(gameOverFlicker());
+        }
+    }
+
+    IEnumerator gameOverFlicker()
+    {
+        while (true)
+        {
+            gameOverText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameOverText.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
