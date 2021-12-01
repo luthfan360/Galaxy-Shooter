@@ -8,14 +8,14 @@ public class Enemy : MonoBehaviour
     int speed = 5;
     Player player;
     Animator anim;
-    BoxCollider2D collider;
+    BoxCollider2D enemyCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         anim = GetComponent<Animator>();
-        collider = GetComponent<BoxCollider2D>();
+        enemyCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject);
             player.addScore();
             anim.SetTrigger("EnemyHit");
-            collider.enabled = false;
+            enemyCollider.enabled = false;
         }
         if (other.tag == "Player")
         {
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
             player.Damaged();
             player.addScore();
             anim.SetTrigger("EnemyHit");
-            collider.enabled = false;
+            enemyCollider.enabled = false;
         }
     }
 }

@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     public bool gameOver = false;
     
     // Start is called before the first frame update
-    void Start()
+    public void StartSpawning()
     {
         StartCoroutine(spawnEnemy());
         StartCoroutine(spawnPowerUp());
@@ -42,6 +42,8 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator spawnEnemy()
     {
+        yield return new WaitForSeconds(3f);
+
         while (gameOver == false)
         {
             Vector3 spawnPosition = new Vector3(Random.Range(-9f, 9f), 10, 0);
@@ -53,6 +55,8 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator spawnPowerUp()
     {
+        yield return new WaitForSeconds(3f);
+
         while (gameOver == false)
         {
             Vector3 spawnPosition = new Vector3(Random.Range(-9f, 9f), 10, 0);
