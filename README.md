@@ -1,7 +1,8 @@
 # Galaxy Shooter Prototype
-Common project for Beginner Game Development Class
+Study project for Game Development Fundamentals class
 
 Platform : UNITY / C#
+Unity Version : 2021.2
 
 Created by Jonathan Weinberger
 
@@ -22,5 +23,5 @@ On this repository https://github.com/luthfan360/Unity-Study
 5. Open the project by clicking its name
 
 ## Things to note
-1. This is a currently ongoing/unfinished project
-2. This project is for educational purposes only
+1. This is still a currently ongoing/unfinished project
+2. This project was made for educational purpose
