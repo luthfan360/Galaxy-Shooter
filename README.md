@@ -2,6 +2,7 @@
 Study project for Game Development Fundamentals class
 
 Platform : UNITY / C#
+
 Unity Version : 2021.2
 
 Created by Jonathan Weinberger
