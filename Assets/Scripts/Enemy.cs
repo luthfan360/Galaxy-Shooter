@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     Player player;
     Animator anim;
     BoxCollider2D enemyCollider;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         anim = GetComponent<Animator>();
         enemyCollider = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class Enemy : MonoBehaviour
             player.addScore();
             anim.SetTrigger("EnemyHit");
             enemyCollider.enabled = false;
+            audioSource.Play();
         }
         if (other.tag == "Player")
         {
@@ -46,6 +49,7 @@ public class Enemy : MonoBehaviour
             player.addScore();
             anim.SetTrigger("EnemyHit");
             enemyCollider.enabled = false;
+            audioSource.Play();
         }
     }
 }

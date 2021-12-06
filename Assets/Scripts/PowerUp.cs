@@ -43,6 +43,7 @@ public class PowerUp : MonoBehaviour
                     player.enableShield();
                     break;
             }
+            player.PowerUpSound();
             Destroy(this.gameObject);
         }
     }

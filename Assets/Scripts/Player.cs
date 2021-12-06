@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
     GameObject laserPrefab;
     [SerializeField]
     GameObject playerShield;
+    [SerializeField]
+    GameObject leftFire, rightFire;
+    [SerializeField]
+    AudioClip laserSound, powerUpSound;
+    AudioSource audioSource;
     SpawnManager spawnManager; 
     UIManager UIManager;
     GameManager gameManager;
@@ -34,7 +39,8 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -77,12 +83,22 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && tripleShotEnabled == true)
         {
             Instantiate(tripleShotPrefab, transform.position, Quaternion.identity);
+            audioSource.clip = laserSound;
+            audioSource.Play();
         }
         else if (Input.GetKeyDown(KeyCode.Space) && Time.time > laserShot)
         {
             laserShot = Time.time + fireRate;
             Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            audioSource.clip = laserSound;
+            audioSource.Play();
         }
+    }
+
+    public void PowerUpSound()
+    {
+        audioSource.clip = powerUpSound;
+        audioSource.Play();
     }
 
     public void addScore()
@@ -103,6 +119,14 @@ public class Player : MonoBehaviour
 
         UIManager.updateLives(lives);
 
+        if (lives < 3)
+        {
+            leftFire.SetActive(true);
+        }
+        if (lives < 2)
+        {
+            rightFire.SetActive(true);
+        }
         if (lives < 1)
         {
             Destroy(this.gameObject);

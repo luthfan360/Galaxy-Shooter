@@ -36,10 +36,8 @@ public class Asteroid : MonoBehaviour
         {
             Destroy(this.gameObject, 1f);
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
             Player player = other.GetComponent<Player>();
             player.Damaged();
-
             spawnManager.StartSpawning();
         }
     }
