@@ -5,8 +5,6 @@ Platform : UNITY / C#
 
 Unity Version : 2021.2
 
-Created by Jonathan Weinberger
-
 ## Download and Prepare Project Files
 On this repository https://github.com/luthfan360/Unity-Study
 1. Click on Code
