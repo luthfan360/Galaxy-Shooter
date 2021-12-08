@@ -6,3 +6,6 @@
 
 # configs
 /.vscode
+
+# others
+/Builds
