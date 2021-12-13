@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     AudioClip explosionSound;
     [SerializeField]
     AudioClip laserSound;
+    [SerializeField]
     bool enemyAlive = true;
 
     // Start is called before the first frame update
@@ -42,6 +43,8 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        //can be made into a separate function, to keep code dry
+
         if (other.tag == "Laser")
         {
             enemyAlive = false;
@@ -68,13 +71,17 @@ public class Enemy : MonoBehaviour
 
     IEnumerator ShootLaser()
     {
-        while (enemyAlive)
+        while (enemyAlive == true)
         {
             float randomInterval = Random.Range(1f, 3f);
             yield return new WaitForSeconds(randomInterval);
-            Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
-            audioSource.clip = laserSound;
-            audioSource.Play();
+
+            if (enemyAlive == true)
+            {
+                Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
+                audioSource.clip = laserSound;
+                audioSource.Play();
+            }
         }
     }
 }

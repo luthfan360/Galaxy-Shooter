@@ -105,6 +105,7 @@ MonoBehaviour:
   enemyLaserPrefab: {fileID: 1167011074178050788, guid: a971113542f011649acda75992fda769, type: 3}
   explosionSound: {fileID: 8300000, guid: 959624e6931f29343a5cbc146a5b7c58, type: 3}
   laserSound: {fileID: 8300000, guid: 32a655a4588537647a9d2ca5990e6d5c, type: 3}
+  enemyAlive: 1
 --- !u!61 &366301059945222161
 BoxCollider2D:
   m_ObjectHideFlags: 0
