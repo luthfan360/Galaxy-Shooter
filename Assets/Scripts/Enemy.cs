@@ -43,30 +43,31 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //can be made into a separate function, to keep code dry
-
         if (other.tag == "Laser")
         {
-            enemyAlive = false;
-            Destroy(this.gameObject, 2.7f);
+            EnemyDestroyed();
             Destroy(other.gameObject);
-            player.addScore();
-            anim.SetTrigger("EnemyHit");
-            enemyCollider.enabled = false;
-            audioSource.clip = explosionSound;
-            audioSource.Play();
         }
         if (other.tag == "Player")
         {
-            enemyAlive = false;
-            Destroy(this.gameObject, 2.7f);
+            EnemyDestroyed();
             player.Damaged();
-            player.addScore();
-            anim.SetTrigger("EnemyHit");
-            enemyCollider.enabled = false;
-            audioSource.clip = explosionSound;
-            audioSource.Play();
         }
+    }
+
+    void EnemyDestroyed()
+    {
+        enemyAlive = false;
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        Destroy(this.gameObject, 2.7f); 
+        player.addScore();
+        anim.SetTrigger("EnemyHit");
+        enemyCollider.enabled = false;
+        audioSource.clip = explosionSound;
+        audioSource.Play();
     }
 
     IEnumerator ShootLaser()

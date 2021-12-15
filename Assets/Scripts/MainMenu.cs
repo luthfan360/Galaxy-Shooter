@@ -5,15 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    bool hintsOpen = false;
+    [SerializeField]
+    GameObject hintsPanel;
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void QuitGame()
     {
-        
+        Application.Quit();
+    }
+
+    public void OpenHints()
+    {
+        if (hintsOpen == false)
+        {
+            hintsPanel.gameObject.SetActive(true);
+            hintsOpen = true;
+        }
+        else
+        {
+            hintsPanel.gameObject.SetActive(false);
+            hintsOpen = false;
+        }
     }
 }

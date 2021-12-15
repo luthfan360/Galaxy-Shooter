@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     Player player;
     [SerializeField]
-    Text scoreText;
+    Text scoreText, bestScoreText;
     [SerializeField]
     Image livesImage;
     [SerializeField]
@@ -16,11 +16,13 @@ public class UIManager : MonoBehaviour
     Text gameOverText;
     [SerializeField]
     Text restartHint;
+    int bestScore;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        bestScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
     // Update is called once per frame
@@ -28,6 +30,9 @@ public class UIManager : MonoBehaviour
     {
         int score = player.score;
         scoreText.text = $"SCORE : {score}";
+        bestScoreText.text = $"BEST : {bestScore}";
+
+        checkBestScore();
     }
 
     public void updateLives(int currentLives)
@@ -38,6 +43,15 @@ public class UIManager : MonoBehaviour
         {
             restartHint.gameObject.SetActive(true);
             StartCoroutine(gameOverFlicker());
+        }
+    }
+
+    void checkBestScore()
+    {
+        if (player.score > bestScore)
+        {
+            bestScore = player.score;
+            PlayerPrefs.SetInt("HighScore", bestScore);
         }
     }
 
